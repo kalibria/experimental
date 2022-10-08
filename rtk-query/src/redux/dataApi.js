@@ -6,7 +6,8 @@ export const dataApi = createApi({
   baseQuery: fetchBaseQuery({baseUrl: 'http://jsonplaceholder.typicode.com'}),
   endpoints: (builder) => ({
     getAllData: builder.query({
-      query: () => '/posts'
+      // query:(limit)=>'/posts'
+       query: (limit = '') => `/posts?${limit && `_limit=${limit}`}`
     })
   })
 })
