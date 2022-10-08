@@ -10,8 +10,8 @@ const [newGoods, setNewGoods] = useState('')
 
   const handleAddGoods = async () => {
     if(newGoods){
-      await addGoods ({body: newGoods}).unwrap();
-      setNewGoods('')
+      await addGoods ({name: newGoods}).unwrap();
+      setNewGoods("")
     }
   }
 
