@@ -1,17 +1,17 @@
-import {useGetAllDataQuery, useAddDataMutation} from './redux/dataApi';
+import {useGetGoodsQuery, useAddGoodsMutation} from './redux/goodsApi';
 import {useState} from 'react';
 
 
 function App() {
 const [count, setCount] = useState('');
-const [newData, setNewData] = useState('')
-  const {data=[], isLoading} = useGetAllDataQuery(count);
-  const [addData, {isError}] = useAddDataMutation();
+const [newGoods, setNewGoods] = useState('')
+  const {data=[], isLoading} = useGetGoodsQuery(count);
+  const [addGoods, {isError}] = useAddGoodsMutation();
 
-  const handleAddData = async () => {
-    if(newData){
-      await addData ({body: newData}).unwrap();
-      setNewData('')
+  const handleAddGoods = async () => {
+    if(newGoods){
+      await addGoods ({body: newGoods}).unwrap();
+      setNewGoods('')
     }
   }
 
@@ -20,8 +20,8 @@ const [newData, setNewData] = useState('')
   return (
     <div>
       <div>
-        <input type="text" value={newData} onChange={(e)=>setNewData(e.target.value)}/>
-        <button onClick={handleAddData}>Add text</button>
+        <input type="text" value={newGoods} onChange={(e)=>setNewGoods(e.target.value)}/>
+        <button onClick={handleAddGoods}>Add text</button>
       </div>
 
       <div>
@@ -36,7 +36,7 @@ const [newData, setNewData] = useState('')
       <ul>
         {data.map(item => (
           <li key={item.id}>
-            {item.title}
+            {item.name}
           </li>
         ))}
       </ul>
