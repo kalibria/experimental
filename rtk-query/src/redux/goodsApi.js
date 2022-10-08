@@ -7,7 +7,7 @@ export const goodsApi = createApi({
   baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:3001/'}),
   endpoints: (builder) => ({
     getGoods: builder.query({
-       query: (limit = '') => `/goods?${limit && `_limit=${limit}`}`,
+       query: (limit = '') => `goods?${limit && `_limit=${limit}`}`,
       providesTags: (result) =>
         result
           ? [
@@ -24,8 +24,15 @@ export const goodsApi = createApi({
       }),
       invalidatesTags: [{type: 'Products', id:'LIST'}]
     }),
+    deleteGoods: builder.mutation({
+      query:(id) => ({
+        url:`goods/${id}`,
+        method:'DELETE',
+      }),
+      invalidatesTags: [{type: 'Products', id:'LIST'}]
+    })
   })
 })
 
 
-export const { useGetGoodsQuery, useAddGoodsMutation } = goodsApi;
+export const { useGetGoodsQuery, useAddGoodsMutation, useDeleteGoodsMutation } = goodsApi;
