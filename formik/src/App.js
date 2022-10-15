@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Formik, useField } from 'formik';
 import * as Yup from 'yup';
+import './App.css';
 
 const MyTextInput = ({ label, id, variant, ...props }) => {
   const [field, meta] = useField(props);
@@ -42,8 +43,10 @@ const App = () => {
             .required('Required'),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          alert(JSON.stringify(values));
-          setSubmitting(false);
+          setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+            setSubmitting(false);
+          }, 500);
         }}
       >
         <Box
