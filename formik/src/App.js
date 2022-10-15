@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { Formik, useField } from 'formik';
+import { Form, Formik, useField } from 'formik';
 import * as Yup from 'yup';
 import './App.css';
 
@@ -43,43 +43,42 @@ const App = () => {
             .required('Required'),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 500);
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
         }}
       >
-        <Box
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <MyTextInput
-            id="outlined-basic"
-            label="Login"
-            variant="outlined"
-            name="login"
-          />
-          <MyTextInput
-            id="outlined-basic"
-            label="Password"
-            variant="outlined"
-            name="password"
-          />
-          <MyTextInput
-            id="outlined-basic"
-            label="Email"
-            variant="outlined"
-            name="email"
-          />
+        <Form>
+          <Box
+            sx={{
+              '& > :not(style)': { m: 1, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <MyTextInput
+              id="outlined-basic"
+              label="Login"
+              variant="outlined"
+              name="login"
+            />
+            <MyTextInput
+              id="outlined-basic"
+              label="Password"
+              variant="outlined"
+              name="password"
+            />
+            <MyTextInput
+              id="outlined-basic"
+              label="Email"
+              variant="outlined"
+              name="email"
+            />
 
-          <Button variant="contained" type="submit">
-            Submit
-          </Button>
-        </Box>
+            <Button variant="contained" type="submit">
+              Submit
+            </Button>
+          </Box>
+        </Form>
       </Formik>
     </React.Fragment>
   );
