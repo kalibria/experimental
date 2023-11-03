@@ -1,162 +1,55 @@
-import { http, HttpResponse } from 'msw'
+export const mockData = {
+  posts: [
+    {"id": 1, "title": "First Blog Post", "content text": "This is the first blog post.", "user id": 12345},
+    {"id": 2, "title": "Cooking Tips for Beginners", "content text": "Learn the basics of cooking in this post.", "user id": 54321},
+    {"id": 3, "title": "Travel Adventures in Europe", "content text": "Explore the beauty of Europe through my travels.", "user id": 98765},
+    {"id": 4, "title": "Technology Trends 2023", "content text": "Discover the latest tech trends for this year.", "user id": 24680},
+    {"id": 5, "title": "Healthy Living Tips", "content text": "Improve your health with these lifestyle changes.", "user id": 13579},
+    {"id": 6, "title": "Movie Review: Blockbuster Hit", "content text": "A review of the year's biggest movie.", "user id": 86420},
+    {"id": 7, "title": "DIY Home Improvement Projects", "content text": "Upgrade your home with these DIY ideas.", "user id": 11111},
+    {"id": 8, "title": "Fitness and Nutrition Guide", "content text": "Achieve your fitness goals with expert advice.", "user id": 22222},
+    {"id": 9, "title": "Book Recommendations for Bookworms", "content text": "Discover great books to read this season.", "user id": 33333},
+    {"id": 10, "title": "Music Festivals: A Journey", "content text": "Experience the magic of music festivals.", "user id": 44444},
+    {"id": 11, "title": "Budget Travel Tips", "content text": "Travel on a budget with these handy tips.", "user id": 55555},
+    {"id": 12, "title": "Gardening Secrets Revealed", "content text": "Grow a stunning garden with these secrets.", "user id": 66666},
+    {"id": 13, "title": "Coding for Beginners", "content text": "Start your coding journey with this guide.", "user id": 77777},
+    {"id": 14, "title": "Artistic Photography Techniques", "content text": "Capture stunning photos with these techniques.", "user id": 88888},
+    {"id": 15, "title": "Historical Landmarks: A Tour", "content text": "Explore the world's historical landmarks.", "user id": 99999},
+    {"id": 16, "title": "Hiking Adventures: Mountain Trails", "content text": "Embark on thrilling mountain hikes.", "user id": 12121},
+    {"id": 17, "title": "Financial Planning for Beginners", "content text": "Secure your financial future with these steps.", "user id": 23232},
+    {"id": 18, "title": "Fashion Trends: Seasonal Styles", "content text": "Stay trendy with the latest fashion tips.", "user id": 34343},
+    {"id": 19, "title": "Pet Care Essentials", "content text": "Ensure the well-being of your beloved pets.", "user id": 45454},
+    {"id": 20, "title": "Car Maintenance Tips", "content text": "Keep your vehicle in top condition with these tips.", "user id": 56565},
+    {"id": 21, "title": "Health and Wellness Tips", "content text": "Achieve a healthier, happier life.", "user id": 67676},
+    {"id": 22, "title": "Delicious Dessert Recipes", "content text": "Satisfy your sweet tooth with these recipes.", "user id": 78787},
+    {"id": 23, "title": "Home Office Productivity Hacks", "content text": "Boost your work-from-home productivity.", "user id": 89898},
+    {"id": 24, "title": "The World of Science Fiction", "content text": "Dive into the fascinating world of sci-fi.", "user id": 10101},
+    {"id": 25, "title": "Photography: Capturing Nature's Beauty", "content text": "Discover the art of nature photography.", "user id": 11212},
+    {"id": 26, "title": "Healthy Eating Habits", "content text": "Transform your diet with healthier choices.", "user id": 12345},
+    {"id": 27, "title": "Exploring Art Museums", "content text": "Immerse yourself in the world of art.", "user id": 23456},
+    {"id": 28, "title": "Investing in Real Estate", "content text": "Unlock the potential of real estate investments.", "user id": 34567},
+    {"id": 29, "title": "The Joy of Baking", "content text": "Bake your way to happiness with these recipes.", "user id": 45678},
+    {"id": 30, "title": "Traveling Solo: A Personal Journey", "content text": "Discover the joys of solo travel.", "user id": 56789},
+    {"id": 31, "title": "Fitness Motivation: Achieve Your Goals", "content text": "Stay motivated on your fitness journey.", "user id": 67890},
+    {"id": 32, "title": "Culinary Adventures Abroad", "content text": "Savor global cuisines in your travels.", "user id": 78901},
+    {"id": 33, "title": "Astronomy and Stargazing", "content text": "Explore the wonders of the night sky.", "user id": 89012},
+    {"id": 34, "title": "Home Decor and Interior Design", "content text": "Transform your living space with style.", "user id": 90123},
+    {"id": 35, "title": "The Art of Storytelling", "content text": "Craft compelling stories with these tips.", "user id": 12312},
+    {"id": 36, "title": "Digital Marketing Strategies", "content text": "Boost your online presence with digital marketing.", "user id": 23423},
+    {"id": 37, "title": "Adventure Travel: Off the Beaten Path", "content text": "Embark on daring journeys to remote destinations.", "user id": 34534},
+    {"id": 38, "title": "Personal Finance Tips for Millennials", "content text": "Secure your financial future with smart choices.", "user id": 45645},
+    {"id": 39, "title": "Street Photography: Capturing Life", "content text": "Document the beauty of everyday life.", "user id": 56756},
+    {"id": 40, "title": "Mental Health Matters", "content text": "Prioritize mental well-being with these strategies.", "user id": 67867},
+    {"id": 41, "title": "Crafting and DIY Projects", "content text": "Unleash your creativity with hands-on projects.", "user id": 78978},
+    {"id": 42, "title": "Eco-Friendly Living: Sustainable Choices", "content text": "Live a greener, more sustainable life.", "user id": 89089},
+    {"id": 43, "title": "Mindfulness Meditation: Inner Peace", "content text": "Find inner peace through mindfulness.", "user id": 90190},
+    {"id": 44, "title": "Exploring World Cuisines", "content text": "Savor the flavors of international cuisines.", "user id": 12321},
+    {"id": 45, "title": "Motivational Quotes for Success", "content text": "Get inspired with powerful quotes.", "user id": 23432},
+    {"id": 46, "title": "Parenting Tips and Advice", "content text": "Navigate the journey of parenthood with confidence.", "user id": 34543},
+    {"id": 47, "title": "The Thrill of Extreme Sports", "content text": "Experience adrenaline-pumping adventures.", "user id": 45654},
+    {"id": 48, "title": "Effective Communication Skills", "content text": "Enhance your communication for success.", "user id": 56765},
+    {"id": 49, "title": "Art History: Masterpieces Unveiled", "content text": "Dive into the world of art's greatest works.", "user id": 67876},
+    {"id": 50, "title": "A Guide to Sustainable Travel", "content text": "Travel responsibly and protect the environment.", "user id": 78987}
+  ]
 
-export const handlers = [
-  http.get('/posts', () => {
-    return HttpResponse.json({
-      posts: [
-        {
-          "id": 1,
-          "title": "The Benefits of Meditation",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 123
-        },
-        {
-          "id": 2,
-          "title": 'The Importance of Self-Care',
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 14
-        },
-        {
-          "id": 3,
-          "title": "How to Boost Your Productivity and Get More Done in Less Time",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 124
-        },
-        {
-          "id": 4,
-          "title": "The Benefits of a Healthy Lifestyle",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 125
-        },
-        {
-          "id": 5,
-          "title": "The Art of Mindfulness: Techniques for Living in the Present Moment",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 126
-        },
-        {
-          "id": 6,
-          "title": "Overcoming Anxiety: Strategies for Managing Stress and Worry",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 127
-        },
-        {
-          "id": 7,
-          "title": "The Science of Happiness: Understanding What Makes Us Happy",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 128
-        },
-        {
-          "id": 8,
-          "title": "Finding Your Purpose: How to Discover Your Passions and Live a Fulfilling Life",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 129
-        },
-        {
-          "id": 9,
-          "title": "The Benefits of Exercise: Why Physical Activity is Essential for Health and Happiness",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 130
-        },
-        {
-          "id": 10,
-          "title": "The Importance of Gratitude: How to Cultivate a Thankful Attitude",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 131
-        },
-        {
-          "id": 11,
-          "title": "Coping with Grief and Loss: Strategies for Healing and Moving Forward",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 132
-        },
-        {
-          "id": 12,
-          "title": "The Benefits of Meditation",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 133
-        },
-        {
-          "id": 13,
-          "title": "The Benefits of Meditation",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 134
-        },
-        {
-          "id": 14,
-          "title": "The Benefits of Meditation",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 135
-        },
-        {
-          "id": 15,
-          "title": "The Benefits of Meditation",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 136
-        },
-        {
-          "id": 16,
-          "title": "The Benefits of Meditation",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 137
-        },
-        {
-          "id": 17,
-          "title": "The Benefits of Meditation",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 138
-        },
-        {
-          "id": 18,
-          "title": "The Benefits of Meditation",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 139
-        },
-        {
-          "id": 19,
-          "title": "The Benefits of Meditation",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 140
-        },
-        {
-          "id": 20,
-          "title": "The Benefits of Meditation",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 141
-        },
-        {
-          "id": 21,
-          "title": "The Benefits of Meditation",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 142
-        },
-        {
-          "id": 22,
-          "title": "The Benefits of Meditation",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 143
-        },
-        {
-          "id": 23,
-          "title": "The Benefits of Meditation",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 144
-        },
-        {
-          "id": 24,
-          "title": "The Benefits of Meditation",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 145
-        },
-        {
-          "id": 25,
-          "title": "The Benefits of Meditation",
-          "content": "Meditation is a practice that has been around for centuries. It involves training the mind to focus and achieve a state of calmness and relaxation. There are numerous benefits to practicing meditation, including reduced stress, improved concentration, and better sleep. In this blog post, we will explore some of the many benefits of meditation and how it can improve your life.",
-          "user_id": 146
-        },
-
-
-    ]
-    })
-  })
-]
+}
