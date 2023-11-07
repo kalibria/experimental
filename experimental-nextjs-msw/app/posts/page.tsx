@@ -8,13 +8,23 @@ const PostsList = async () => {
 
  console.log("posts", posts)
   const postsList = posts.map((post)=>{
-    return <li key={post.id}>{post.title}</li>
-
-
-
+    return <tr key={post.id}>
+     <th >{post.title}</th>
+     <th>{post.content}</th>
+    </tr>
   })
   return <div>
+   <table>
+    <thead>
+     <tr>
+      <th>Title</th>
+      <th>Description</th>
+     </tr>
+    </thead>
+    <tbody>
     {postsList}
+    </tbody>
+   </table>
   </div>
 }
 
